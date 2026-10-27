@@ -1,3 +1,5 @@
 <Solution>
-  <Folder Name="/TrafiklysOpgave/" />
+  <Folder Name="/TrafiklysOpgave/">
+    <Project Path="Trafiklys/Trafiklys.csproj" Id="9c26c4fa-681f-42db-9000-7fc2e719c84a" />
+  </Folder>
 </Solution>

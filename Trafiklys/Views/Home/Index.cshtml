@@ -1,0 +1,29 @@
+﻿@model string
+
+@{
+    var textClass = Model switch {
+        "Rød" => "text-danger",
+        "Gul" => "text-warning",
+        "Grøn" => "text-success",
+        _ => ""
+    };
+
+    var canDrive = Model == "Grøn";
+}
+
+<div class="text-center">
+<h1>Trafiklys</h1>
+
+<form asp-action="Index" method="post">
+    <input type="hidden" name="colour" value="@Model" />
+
+    <label class="@textClass fw-bold fs-3">@Model</label>
+
+    <div class="d-flex gap-2 justify-content-center">
+        <button type="submit" name="command" value="Red" class="btn btn-danger">Rød</button>
+        <button type="submit" name="command" value="Yellow" class="btn btn-warning">Gul</button>
+        <button type="submit" name="command" value="Green" class="btn btn-success">Grøn</button>
+        <button type="submit" name="command" value="Drive" class="btn btn-primary" disabled="@(!canDrive)">Kør!</button>
+    </div>
+</form>
+</div>
