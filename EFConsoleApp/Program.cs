@@ -1,10 +1,12 @@
-﻿using EFConsoleApp.Data;
+﻿
+using EFConsoleApp.Data;
 using EFConsoleApp.Models;
 using Microsoft.EntityFrameworkCore;
+
 Console.WriteLine("Programmet starter");
 
 /*
- * opsætning af DbContext
+ * Opsætning af DbContext
  */
 var connectionString = DbConfig.ConnectionString;
 
@@ -15,36 +17,59 @@ var options = new DbContextOptionsBuilder<AppDbContext>()
 using AppDbContext dbcontext = new(options);
 
 /*
- * sletter tabellernes indhold, så altid starter
- * forfra i vores testanvendelse.
+ * Sletter tabellernes indhold,
+ * så vi altid starter forfra i testanvendelsen.
  */
-dbcontext.Orders.RemoveRange(dbcontext.Orders);
-dbcontext.Customers.RemoveRange(dbcontext.Customers);
+dbcontext.Courses.RemoveRange(dbcontext.Courses);
+dbcontext.Students.RemoveRange(dbcontext.Students);
+dbcontext.Instructors.RemoveRange(dbcontext.Instructors);
 dbcontext.SaveChanges();
 
 /*
- * testanvendelse
+ * Testanvendelse
  */
-var alice = new Customer { Name = "Alice" };
-alice.Orders.Add(new Order { OrderDate = DateTime.Now, TotalAmount = 199.95m });
-alice.Orders.Add(new Order { OrderDate = DateTime.Now, TotalAmount = 9.95m });
 
-var bob = new Customer { Name = "Bob" };
-bob.Orders.Add(new Order { OrderDate = DateTime.Now, TotalAmount = 100.95m });
+// Opret underviser
+var bastian = new Instructor { Name = "Bastian" };
+
+// Opret kurser
+var sys = new Course {
+    Subject = "Sys",
+    Instructor = bastian
+};
+
+var pro = new Course {
+    Subject = "Pro",
+    Instructor = bastian
+};
+
+// Opret studerende
+var alice = new Student { Name = "Alice" };
+alice.Courses.Add(pro);
+alice.Courses.Add(sys);
+
+var bob = new Student { Name = "Bob" };
+bob.Courses.Add(sys);
 
 /*
- * brug af DbContext
+ * Brug af DbContext
  */
-dbcontext.Customers.Add(alice);
-dbcontext.Customers.Add(bob);
+
+// Tilføjer studerende og deres relaterede objekter
+dbcontext.Students.AddRange(alice, bob);
 dbcontext.SaveChanges();
 
-// eager loading
-var customers = dbcontext.Customers
-  .Include(c => c.Orders);
+/*
+ * Eager loading
+ */
+var students = dbcontext.Students
+    .Include(s => s.Courses)
+    .ToList();
 
-foreach (Customer c in customers)
-    Console.WriteLine($"{c.Name} - #orders: {c.Orders.Count}");
+foreach (Student student in students) {
+    Console.WriteLine(
+        $"{student.Name} - #courses: {student.Courses.Count}");
+}
 
 Console.WriteLine("Programmet er færdigt");
 Console.ReadLine();

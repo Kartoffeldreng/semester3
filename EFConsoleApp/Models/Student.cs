@@ -1,9 +1,12 @@
 namespace EFConsoleApp.Models; 
 
-public class Customer {
+public class Student {
   public int Id { get; set; }
   public string? Name { get; set; }
 
+
   // Collection Navigation Property
-  public ICollection<Order> Orders { get; set; } = [];
+  public ICollection<Course> Courses { get; set; } = [];
+
+  
 }
