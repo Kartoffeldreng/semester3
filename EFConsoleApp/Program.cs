@@ -43,6 +43,8 @@ var pro = new Course {
     Instructor = bastian
 };
 
+Console.WriteLine(bastian.Courses.Count);
+
 // Opret studerende
 var alice = new Student { Name = "Alice" };
 alice.Courses.Add(pro);
@@ -64,11 +66,13 @@ dbcontext.SaveChanges();
  */
 var students = dbcontext.Students
     .Include(s => s.Courses)
+    .ThenInclude(i => i.Instructor)
     .ToList();
 
 foreach (Student student in students) {
-    Console.WriteLine(
-        $"{student.Name} - #courses: {student.Courses.Count}");
+    foreach (Course course in student.Courses) 
+        Console.WriteLine(
+            $"{student.Name} - #instructor: {course.Instructor?.Name}");
 }
 
 Console.WriteLine("Programmet er færdigt");
