@@ -4,6 +4,7 @@ using Trafiklys.Models;
 
 namespace Trafiklys.Controllers {
     public class HomeController : Controller {
+
         public IActionResult Index() {
             return View(model:"Rød");
         }
