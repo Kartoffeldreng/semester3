@@ -1,0 +1,53 @@
+﻿@model IEnumerable<PersonApp.Models.Person>
+
+@{
+    ViewData["Title"] = "Personer";
+}
+
+<div>
+    <h1>Personer</h1>
+</div>
+
+@if (ViewData["Message"] != null) {
+    <div class="alert alert-success">@ViewData["Message"]</div>
+}
+
+<form asp-action="Index" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="name" class="form-label">Navn</label>
+        <input class="form-control w-50" type="text" id="name" name="name" />
+    </div>
+    <div class="mb-3">
+        <label for="file" class="form-label">Billede</label>
+        <input class="form-control w-50" type="file" id="file" name="file" />
+    </div>
+    <button class="btn btn-primary" type="submit">Registrer</button>
+</form>
+
+@if (Model != null && Model.Any()) {
+    <h2 class="mt-4">Registrerede personer</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Navn</th>
+                <th>Billede</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var person in Model) {
+                <tr>
+                    <td>@person.Name</td>
+                    <td>
+                        <img src="/Fotos/@System.IO.Path.GetFileName(person.ImageFileName)"
+                             alt="@person.Name"
+                             style="max-height: 100px;" />
+                    </td>
+                    <td>
+                        <a class="btn btn-secondary" asp-action="Download" asp-route-fileName="@person.ImageFileName">Download</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

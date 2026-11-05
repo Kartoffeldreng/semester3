@@ -2,6 +2,9 @@
   <Folder Name="/EFConsoleApp/">
     <Project Path="EFConsoleApp/EFConsoleApp.csproj" Id="2a0beffa-a984-4d38-9efe-17431492a467" />
   </Folder>
+  <Folder Name="/EFPersonApp/">
+    <Project Path="PersonApp/PersonApp.csproj" Id="caf947cc-ae26-4647-ae19-6c21e12aad83" />
+  </Folder>
   <Folder Name="/Solution Items/">
     <File Path="docker-compose.yml" />
   </Folder>
