@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@ViewData["Title"] - BookApp</title>
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+  <header>
+    <div class="container d-flex justify-content-between align-items-center py-3">
+      <h1 class="h3 mb-0">BookApp</h1>
+      <nav>
+        <a asp-controller="Home" asp-action="Index" class="me-3">Forside</a>
+        <a asp-controller="Book" asp-action="Index">Bøger</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container py-4">
+      @RenderBody()
+    </div>
+  </main>
+
+  <footer>
+    <div class="container py-3">
+      <div class="mb-0 text-muted">
+        &copy; 2026 BookApp &mdash; Eksempel i ASP.NET Core 10 MVC
+      </div>
+    </div>
+  </footer>
+
+  <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

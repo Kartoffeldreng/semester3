@@ -1,0 +1,35 @@
+@page "{id:int}"
+@model DeleteModel
+
+@{
+  ViewData["Title"] = "Slet bog";
+}
+
+<h1>Slet bog</h1>
+
+<h3 class="text-danger">Er du sikker på, at du vil slette denne bog?</h3>
+<hr />
+
+<div>
+  <dl class="row">
+    <dt class="col-sm-2">Titel</dt>
+        <dd class="col-sm-10">@Model.Book?.Title</dd>
+
+    <dt class="col-sm-2">Forfatter</dt>
+        <dd class="col-sm-10">@Model.Book?.Author</dd>
+
+    <dt class="col-sm-2">Sidetal</dt>
+        <dd class="col-sm-10">@Model.Book?.Pages</dd>
+
+    <dt class="col-sm-2">Pris</dt>
+        <dd class="col-sm-10">@Model.Book?.Price.ToString("N2")</dd>
+
+    <dt class="col-sm-2">Udgivelsesår</dt>
+    <dd class="col-sm-10">@Model.Book?.Published</dd>
+  </dl>
+
+    <form method="post">
+        <button type="submit" class="btn btn-danger">Slet</button>
+        <a asp-page="Index" class="btn btn-secondary">Fortryd</a>
+    </form>
+</div>

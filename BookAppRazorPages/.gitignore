@@ -1,0 +1,51 @@
+# .NET build output
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Pp]ublish/
+
+# Visual Studio / Rider
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Test results
+[Tt]est[Rr]esult/
+*.trx
+*.coverage
+coverage/**
+
+# NuGet
+*.nupkg
+*.snupkg
+*.nupkg.metadata
+packages/
+*.nuget.props
+*.nuget.targets
+
+# SQLite (hvis man senere skifter til en rigtig database)
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# Lokale appsettings / secrets (IKKE tilføj rigtige secrets i git!)
+appsettings.Local.json
+appsettings.*.Local.json
+secrets.json
+
+# OS filer
+.DS_Store
+Thumbs.db
+
+# Logfiler og temp
+*.log
+*.tmp
+*.swp
+
+# Personlige notes-filer
+notes.txt

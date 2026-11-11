@@ -1,0 +1,41 @@
+# editorconfig.org
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+
+[*.cs]
+# Curly Brackets Style
+csharp_indent_braces = false
+csharp_new_line_before_open_brace = accessors,object_initializers,indexer,events,anonymous_methods,anonymous_types,declaration_statements,switch_expression_arm,lambdas
+csharp_new_line_before_else = true
+csharp_new_line_before_catch = true
+csharp_new_line_before_finally = true
+csharp_new_line_before_members_in_object_initializers = true
+csharp_new_line_before_members_in_anonymous_types = true
+csharp_new_line_between_query_clauses = true
+csharp_prefer_braces = false
+
+# Private fields must use camelCase with underscore prefix
+dotnet_naming_rule.private_fields_should_be_camel_case_underscore.severity = warning
+dotnet_naming_rule.private_fields_should_be_camel_case_underscore.symbols = private_fields
+dotnet_naming_rule.private_fields_should_be_camel_case_underscore.style = camel_case_underscore
+dotnet_naming_symbols.private_fields.applicable_kinds = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private
+dotnet_naming_style.camel_case_underscore.required_prefix = _
+dotnet_naming_style.camel_case_underscore.capitalization = camel_case
+
+[*.{js,jsx,ts,tsx}]
+# JavaScript style mirroring C# preferences
+javascript_new_line_before_else = true
+javascript_new_line_before_catch = true
+javascript_new_line_before_finally = true
+javascript_prefer_braces = false
+
+[*.{cshtml,html,css}]
+indent_size = 2

@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/BookAppRazorPages/">
+    <Project Path="BookAppRazorPages/BookApp/BookApp.csproj" />
+  </Folder>
   <Folder Name="/EFConsoleApp/">
     <Project Path="EFConsoleApp/EFConsoleApp.csproj" Id="2a0beffa-a984-4d38-9efe-17431492a467" />
   </Folder>
