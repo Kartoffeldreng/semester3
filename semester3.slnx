@@ -8,6 +8,7 @@
   <Folder Name="/EFPersonApp/">
     <Project Path="PersonApp/PersonApp.csproj" Id="caf947cc-ae26-4647-ae19-6c21e12aad83" />
   </Folder>
+  <Folder Name="/SecureAppVC/" />
   <Folder Name="/Solution Items/">
     <File Path="docker-compose.yml" />
   </Folder>
