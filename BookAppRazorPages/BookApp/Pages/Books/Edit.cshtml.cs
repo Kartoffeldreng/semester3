@@ -37,7 +37,7 @@ namespace BookApp.Pages.Books {
       _bookRepository.Update(existing);
 
       TempData["Success"] = $"Bogen \"{existing.Title}\" er opdateret.";
-      return RedirectToPage("./Index");
+      return RedirectToPage(nameof(Index));
     }
 
 
